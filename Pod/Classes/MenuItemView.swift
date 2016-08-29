@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol Selectable {
+    func selected(selected: Bool) -> Void
+}
+
 public class MenuItemView: UIView {
     lazy public var titleLabel: UILabel = self.initLabel()
     lazy public var descriptionLabel: UILabel = self.initLabel()
@@ -47,7 +51,10 @@ public class MenuItemView: UIView {
                 descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, maxWidth: maxWindowSize).width
             case .Image(let image, let selectedImage):
                 menuImageView.image = selected ? (selectedImage ?? image) : image
-            case .Custom: break
+            case .Custom:
+                if let selectable = customView as? Selectable {
+                    selectable.selected(selected)
+                }
             }
         }
     }

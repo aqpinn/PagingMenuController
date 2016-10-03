@@ -10,8 +10,8 @@ import Foundation
 
 public protocol PagingMenuControllerCustomizable {
     var defaultPage: Int { get }
-    var animationDuration: NSTimeInterval { get }
-    var scrollEnabled: Bool { get }
+    var animationDuration: TimeInterval { get }
+    var isScrollEnabled: Bool { get }
     var backgroundColor: UIColor { get }
     var lazyLoadingPage: LazyLoadingPage { get }
     var menuControllerSet: MenuControllerSet { get }
@@ -22,35 +22,35 @@ public extension PagingMenuControllerCustomizable {
     var defaultPage: Int {
         return 0
     }
-    var animationDuration: NSTimeInterval {
+    var animationDuration: TimeInterval {
         return 0.3
     }
-    var scrollEnabled: Bool {
+    var isScrollEnabled: Bool {
         return true
     }
     var backgroundColor: UIColor {
-        return UIColor.whiteColor()
+        return UIColor.white
     }
     var lazyLoadingPage: LazyLoadingPage {
-        return .Three
+        return .three
     }
     var menuControllerSet: MenuControllerSet {
-        return .Multiple
+        return .multiple
     }
 }
 
 public enum LazyLoadingPage {
-    case One
-    case Three
+    case one
+    case three
 }
 
 public enum MenuControllerSet {
-    case Single
-    case Multiple
+    case single
+    case multiple
 }
 
 public enum ComponentType {
-    case MenuView(menuOptions: MenuViewCustomizable)
-    case PagingController(pagingControllers: [UIViewController])
-    case All(menuOptions: MenuViewCustomizable, pagingControllers: [UIViewController])
+    case menuView(menuOptions: MenuViewCustomizable)
+    case pagingController(pagingControllers: [UIViewController])
+    case all(menuOptions: MenuViewCustomizable, pagingControllers: [UIViewController])
 }

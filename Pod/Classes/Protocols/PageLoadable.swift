@@ -9,8 +9,8 @@
 import Foundation
 
 protocol PageLoadable {
-    func shouldLoadPage(page: Int) -> Bool
-    func isVisibleController(controller: UIViewController) -> Bool
+    func shouldLoad(page: Int) -> Bool
+    func isVisible(controller: UIViewController) -> Bool
     func showVisibleControllers()
     func hideVisibleControllers()
 }

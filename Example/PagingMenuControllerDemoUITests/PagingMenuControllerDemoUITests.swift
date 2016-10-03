@@ -33,16 +33,13 @@ class PagingMenuControllerDemoUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let tablesQuery = XCUIApplication().tables
-        tablesQuery.elementBoundByIndex(0).swipeUp()
+        tablesQuery.element(boundBy: 0).swipeUp()
+        tablesQuery.staticTexts["Standard + MultilineText"].tap()
         
         let elementsQuery = XCUIApplication().scrollViews.otherElements
-        elementsQuery.staticTexts["Users"].swipeLeft()
-        elementsQuery.staticTexts["Repositories"].swipeLeft()
-        elementsQuery.staticTexts["Gists"].swipeLeft()
-        elementsQuery.staticTexts["Organizations"].swipeLeft()
         
-        elementsQuery.staticTexts["Gists"].tap()
-        elementsQuery.staticTexts["Repositories"].tap()
-        elementsQuery.staticTexts["Users"].tap()
+        elementsQuery.staticTexts["MenuItemUsers()"].swipeLeft()
+        elementsQuery.staticTexts["MenuItemGists()"].tap()
+        XCUIApplication().tables.element(boundBy: 0).swipeLeft()
     }
 }
